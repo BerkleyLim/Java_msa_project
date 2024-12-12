@@ -55,9 +55,10 @@
 ## 프로젝트 구성도
 
 ```
-O-BAB/
-├── obab-client/      # JavaScript, React 기반 화면단 구축
-└── obab-server/      # Python, Django로 서버 및 DB 구축
+Project/
+├── msa-sales/      # 영업 서비스 프로젝트
+├── msa-menuf/      # 제조 서비스 프로젝트
+└── msa-stock/      # 재고 서비스 프로젝트
 ```
 
 
