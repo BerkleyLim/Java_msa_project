@@ -1,11 +1,9 @@
 # Java_msa_project
-
 - Java 기반 MSA 프로젝트 개발
 
 ## 프로젝트 목적
 - 이 프로젝트는 학습 및 포트폴리오 용도로 제작된 간단한 음료 주문 제작 서비스입니다.  
 - 실제 상용 프로젝트와는 무관하며, 특정 기업의 데이터를 참조하거나 활용하지 않았습니다.
-
 
 ## MSA 서비스 목록
 - 영업 서비스
@@ -39,3 +37,27 @@
 - 재고가 충분할 경우 즉시 출고 가능 그렇지 않을경우 제조 후 출고
 - 자재가 부족한 경우 필요 자재를 발주 받아 입고,
 - 결론은 음료 공장을 위한 서비스를 개발하여라.
+
+
+## 사용 기술 스택
+
+| **분야**        | **기술 스택**                                                                                   |
+|-----------------|-------------------------------------------------------------------------------------------------|
+| **프론트엔드**  | TypeScript, React, Recoil, React-Query, HTML, CSS, TailwindCSS, Material UI                     |
+| **백엔드**      | Java 17, Spring Boot 3.4.1                                                        |
+| **DB**          | Redis, MySQL                                                                                   |
+| **Infra**       | AWS, Route 53, Nginx,                                                                     |
+| **API**         | Kakao API, Google API, Naver API, OPENAI API                                                    |
+| **기타**        | SSE, Web Socket, SEO                                                                            |
+
+
+
+## 프로젝트 구성도
+
+```
+O-BAB/
+├── obab-client/      # JavaScript, React 기반 화면단 구축
+└── obab-server/      # Python, Django로 서버 및 DB 구축
+```
+
+
