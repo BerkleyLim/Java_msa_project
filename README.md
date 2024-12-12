@@ -47,7 +47,6 @@
 | **백엔드**      | Java 17, Spring Boot 3.4.1                                                        |
 | **DB**          | Redis, MySQL                                                                                   |
 | **Infra**       | AWS, Route 53, Nginx,                                                                     |
-| **API**         | Kakao API, Google API, Naver API, OPENAI API                                                    |
 | **기타**        | SSE, Web Socket, SEO                                                                            |
 
 
