@@ -20,7 +20,7 @@
 [이미지 첨부]
 
 
-## 서비스 구성
+### 서비스 구성
 
 * **영업 서비스:** 고객 주문 접수, 주문 정보 관리, 매출 관리 등을 담당합니다.
   * **주요 기능:** 주문 생성, 주문 상태 변경, 결제 처리
@@ -32,31 +32,39 @@
   * **주요 기능:** 재고 관리, 자재 입고, 자재 출고
   * **데이터 모델:** 재고(stockId, materialId, quantity), 입고(receiptId, materialId, quantity), 출고(shipmentId, materialId, quantity)
 
-## 요구사항
+### 요구사항
 - 간단한 음료 주문 제작 서비스를 제작한다
 - 콜라, 사이다, 환타, 오랜지 주스, 소주 등 다양한 음료를 판매한다.
 - 재고가 충분할 경우 즉시 출고 가능 그렇지 않을경우 제조 후 출고
 - 자재가 부족한 경우 필요 자재를 발주 받아 입고,
 - 결론은 음료 공장을 위한 서비스를 개발하여라.
 
-
+### 기술 스택
 
 | **분야**        | **기술**                                                                                   | **선택 이유** | **활용 부분** |
 |-----------------|-------------------------------------------------------------------------------------------------|---------------|---------------|
-| **프론트엔드**  | TypeScript, React, Recoil, React-Query, HTML, CSS, TailwindCSS, Material UI                     | 최신 기술 스택 사용, 생산성 향상 | UI 개발, 상태 관리, 데이터 페칭 |
-| **백엔드**      | Java 17, Spring Boot 3.4.1                                                                      | 개발 생산성 향상, 다양한 기능 제공 | API 개발, 데이터 처리 |
+| **프론트엔드**  | TypeScript, React, Recoil, React-Query, TailwindCSS, Material UI                          | 최신 기술 스택 사용, 생산성 향상 | UI 개발, 상태 관리, 데이터 페칭 |
+| **백엔드**      | Java 17, Spring Boot 3.4.1, Spring Colud (Config Server, Eureka)                                | 개발 생산성 향상, 다양한 기능 제공 | API 개발, 데이터 처리 |
 | **DB**          | Redis, MySQL                                                                                   | 빠른 데이터 접근, 관계형 데이터베이스 | 캐싱, 데이터 저장 |
 | **Infra**       | AWS, Route 53, Nginx                                                                           | 확장성, 안정성 | 배포, 도메인 관리, 로드 밸런싱 |
-| **기타**        | SSE, Web Socket, SEO                                                                           | 실시간 데이터 전송, 검색 최적화 | 실시간 통신, 검색 엔진 최적화 |
+| **기타**        | SSE, Web Socket, SEO, RabbitMQ, Kafka(필요시)                                                      | 실시간 데이터 전송, 검색 최적화 | 실시간 통신, 검색 엔진 최적화 |
 
 
-## 프로젝트 구성도
+### 프로젝트 구성도
 
 ```
 Project/
-├── msa-sales/      # 영업 서비스 프로젝트
-├── msa-manufact/   # 제조 서비스 프로젝트
-└── msa-stock/      # 재고 서비스 프로젝트
+├── msa-sales/       # 영업 서비스 (Order, Payment)
+├── msa-manufact/    # 제조 서비스 (Material, Recipe)
+├── msa-stock/       # 재고 서비스 (Stock, Inventory)
+├── gateway/         # API Gateway
+├── config-server/   # Spring Cloud Config Server (공통 설정)
+├── discovery/       # Eureka Service Discovery
+├── rabbitmq/        # RabbitMQ for messaging
+└── msa-front/        # React 프론트엔드 프로젝트
 ```
+
+
+###
 
 
