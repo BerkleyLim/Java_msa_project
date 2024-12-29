@@ -44,7 +44,7 @@
 | **분야**        | **기술**                                                                                   | **선택 이유** | **활용 부분** |
 |-----------------|-------------------------------------------------------------------------------------------------|---------------|---------------|
 | **프론트엔드**  | TypeScript, React, Recoil, React-Query, TailwindCSS, Material UI                          | 최신 기술 스택 사용, 생산성 향상 | UI 개발, 상태 관리, 데이터 페칭 |
-| **백엔드**      | Java 17, Spring Boot 3.4.1, Spring Colud (Config Server, Eureka)                                | 개발 생산성 향상, 다양한 기능 제공 | API 개발, 데이터 처리 |
+| **백엔드**      | Java 17, Spring Boot 3.4.1, Spring Colud (Config Server, Eureka), Node.js, Express.js                        | 개발 생산성 향상, 다양한 기능 제공 | API 개발, 데이터 처리 |
 | **DB**          | Redis, MySQL                                                                                   | 빠른 데이터 접근, 관계형 데이터베이스 | 캐싱, 데이터 저장 |
 | **Infra**       | AWS, Route 53, Nginx                                                                           | 확장성, 안정성 | 배포, 도메인 관리, 로드 밸런싱 |
 | **기타**        | SSE, Web Socket, SEO, RabbitMQ, Kafka(필요시)                                                      | 실시간 데이터 전송, 검색 최적화 | 실시간 통신, 검색 엔진 최적화 |
