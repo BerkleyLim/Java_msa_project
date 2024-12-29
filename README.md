@@ -57,11 +57,11 @@ Project/
 ├── msa-sales/       # 영업 서비스 (Order, Payment)
 ├── msa-manufact/    # 제조 서비스 (Material, Recipe)
 ├── msa-stock/       # 재고 서비스 (Stock, Inventory)
-├── gateway/         # API Gateway
+├── gateway/         # API Gateway (Node.js + Express.js)
 ├── config-server/   # Spring Cloud Config Server (공통 설정)
 ├── discovery/       # Eureka Service Discovery
 ├── rabbitmq/        # RabbitMQ for messaging
-└── msa-front/        # React 프론트엔드 프로젝트
+└── msa-front/       # React 프론트엔드 프로젝트
 ```
 
 
