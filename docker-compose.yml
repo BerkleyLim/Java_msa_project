@@ -1,0 +1,115 @@
+version: '3'
+services:
+  # 1) Gateway
+  gateway:
+    build: ./gateway
+    container_name: gateway
+    ports:
+      - "8111:8111"
+    depends_on:
+      - order-service
+      - payment-service
+      - stock-service
+    networks:
+      - msa-network
+
+  # 2) Order Service (Spring Boot 예시)
+  order-service:
+    build: ./msa-order
+    container_name: order-service
+    environment:
+      - DB_HOST=order-db
+      - DB_NAME=orderdb
+      - DB_USER=root
+      - DB_PASS=1234
+    depends_on:
+      - order-db
+    networks:
+      - msa-network
+
+  order-db:
+    image: mysql:8
+    container_name: order-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=orderdb
+    ports:
+      - "3307:3306"
+    networks:
+      - msa-network
+
+  # 3) Payment Service (Node.js 예시)
+  payment-service:
+    build: ./msa-payment
+    container_name: payment-service
+    environment:
+      - DB_HOST=payment-db
+      - DB_USER=postgres
+      - DB_PASS=1234
+    depends_on:
+      - payment-db
+    networks:
+      - msa-network
+
+  payment-db:
+    image: postgres:14
+    container_name: payment-db
+    environment:
+      - POSTGRES_DB=paymentdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5433:5432"
+    networks:
+      - msa-network
+
+  # 4) Stock Service (Spring Boot or Node.js)
+  stock-service:
+    build: ./msa-stock
+    container_name: stock-service
+    environment:
+      - DB_HOST=stock-db
+      - DB_USER=root
+      - DB_PASS=1234
+    depends_on:
+      - stock-db
+    networks:
+      - msa-network
+
+
+  stock-db:
+    image: mysql:8
+    container_name: stock-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=stockdb
+    ports:
+      - "3308:3306"
+    networks:
+      - msa-network
+
+# Eureka Discovery Server
+# 현재는 사용하지 않음 (향후 사용 예정)
+  discovery:
+    build: ./discovery-service
+    container_name: discovery
+    ports:
+      - "8761:8761"
+    networks:
+      - msa-network
+
+# RabbitMQ
+# 현재는 사용하지 않음 (향후 사용 예정) - kafka로도 대체 가능
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - msa-network
+
+
+networks:
+  msa-network:
+    driver: bridge
