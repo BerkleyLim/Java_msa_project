@@ -54,16 +54,15 @@
 ### 프로젝트 구성도
 
 ```
-project-root/
-├── gateway-service/       # API Gateway
-├── auth-service/          # 인증 서비스
-├── user-service/          # 사용자 도메인 서비스
-├── product-service/       # 상품 도메인 서비스
-├── order-service/         # 주문 도메인 서비스
-├── payment-service/       # 결제 도메인 서비스
-├── config-server/         # Spring Cloud Config Server
-├── discovery-server/      # Eureka 또는 Consul
-├── api-docs/              # API 명세서
+Project/
+├── msa-sales/          # 영업 서비스 (Order, Payment) => MySQL
+├── msa-manufact/       # 제조 서비스 (Material, Recipe) => MongoDB
+├── msa-stock/          # 재고 서비스 (Stock, Inventory) => MySQL + (Redis for caching)
+├── gateway/            # API Gateway (Node.js) - (파일럿 프로젝트 특성 상 임시로 인증서버 포함함)
+├── config-server/       # Spring Cloud Config Server
+├── discovery/           # Eureka Service Discovery
+├── rabbitmq/            # 메시지 브로커
+├── msa-front/           # React 프론트
 └── docker-compose.yml     # 전체 서비스 배포 관리
 ```
 
