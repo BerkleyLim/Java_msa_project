@@ -20,7 +20,7 @@
 [이미지 첨부]
 
 
-## 서비스 구성
+### 서비스 구성
 
 * **영업 서비스:** 고객 주문 접수, 주문 정보 관리, 매출 관리 등을 담당합니다.
   * **주요 기능:** 주문 생성, 주문 상태 변경, 결제 처리
@@ -32,31 +32,42 @@
   * **주요 기능:** 재고 관리, 자재 입고, 자재 출고
   * **데이터 모델:** 재고(stockId, materialId, quantity), 입고(receiptId, materialId, quantity), 출고(shipmentId, materialId, quantity)
 
-## 요구사항
+### 요구사항
 - 간단한 음료 주문 제작 서비스를 제작한다
 - 콜라, 사이다, 환타, 오랜지 주스, 소주 등 다양한 음료를 판매한다.
 - 재고가 충분할 경우 즉시 출고 가능 그렇지 않을경우 제조 후 출고
 - 자재가 부족한 경우 필요 자재를 발주 받아 입고,
 - 결론은 음료 공장을 위한 서비스를 개발하여라.
 
+### 기술 스택
+
+| **분야**        | **기술**                                                    | **선택 이유**                             | **활용 부분**                        |
+|-----------------|------------------------------------------------------------|------------------------------------------|---------------------------------------|
+| **프론트엔드**  | TypeScript, React, Zustand, React Query, Tailwind CSS, Material UI | 최신 기술 스택, 간결하고 확장 가능한 상태 관리 | UI 개발, 상태 관리, 데이터 페칭       |
+| **백엔드**      | Java 17, Spring Boot 3.4.1, Spring Cloud (Config Server, Eureka), Node.js, Express.js | 확장성 및 다양한 기능 제공, 생산성 향상       | API 개발, 데이터 처리                 |
+| **DB**          | Redis, MySQL, MongoDB                                      | 빠른 데이터 접근(캐싱), 관계형 및 비정형 데이터 처리 | 캐싱, 데이터 저장, 비정형 데이터 관리  |
+| **Infra**       | AWS, Route 53, Nginx                                       | 클라우드 확장성, 안정성                     | 배포, 도메인 관리, 로드 밸런싱         |
+| **메시징**      | RabbitMQ, Kafka (필요시)                                   | 비동기 메시지 처리, 대규모 데이터 처리         | 실시간 메시징, 이벤트 기반 아키텍처 구현 |
+| **기타**        | SSE, WebSocket, SEO                                        | 실시간 데이터 전송, 검색 엔진 최적화           | 실시간 통신, 검색 최적화              |
 
 
-| **분야**        | **기술**                                                                                   | **선택 이유** | **활용 부분** |
-|-----------------|-------------------------------------------------------------------------------------------------|---------------|---------------|
-| **프론트엔드**  | TypeScript, React, Recoil, React-Query, HTML, CSS, TailwindCSS, Material UI                     | 최신 기술 스택 사용, 생산성 향상 | UI 개발, 상태 관리, 데이터 페칭 |
-| **백엔드**      | Java 17, Spring Boot 3.4.1                                                                      | 개발 생산성 향상, 다양한 기능 제공 | API 개발, 데이터 처리 |
-| **DB**          | Redis, MySQL                                                                                   | 빠른 데이터 접근, 관계형 데이터베이스 | 캐싱, 데이터 저장 |
-| **Infra**       | AWS, Route 53, Nginx                                                                           | 확장성, 안정성 | 배포, 도메인 관리, 로드 밸런싱 |
-| **기타**        | SSE, Web Socket, SEO                                                                           | 실시간 데이터 전송, 검색 최적화 | 실시간 통신, 검색 엔진 최적화 |
-
-
-## 프로젝트 구성도
+### 프로젝트 구성도
 
 ```
 Project/
-├── msa-sales/      # 영업 서비스 프로젝트
-├── msa-manufact/   # 제조 서비스 프로젝트
-└── msa-stock/      # 재고 서비스 프로젝트
+├── msa-sales/          # 영업 서비스 (Order, Payment) => MySQL
+├── msa-manufact/       # 제조 서비스 (Material, Recipe) => MongoDB
+├── msa-stock/          # 재고 서비스 (Stock, Inventory) => MySQL + (Redis for caching)
+├── gateway/            # API Gateway (Node.js) - (파일럿 프로젝트 특성 상 임시로 인증서버 포함함)
+├── config-server/       # Spring Cloud Config Server
+├── discovery/           # Eureka Service Discovery
+├── rabbitmq/            # 메시지 브로커
+├── msa-front/           # React 프론트
+└── docker-compose.yml     # 전체 서비스 배포 관리
 ```
+
+
+### 블로그 스토리
+1. [MSA 파일럿 프로젝트 - 소개 편](https://velog.io/@berkleylim/1-MSA-%ED%8C%8C%EC%9D%BC%EB%9F%BF-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C-%ED%8E%B8)
 
 
